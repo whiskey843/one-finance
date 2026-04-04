@@ -79,6 +79,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .logo {
@@ -95,6 +96,8 @@ body {
 .logo-img {
     height: 75px;
     width: auto;
+    max-width: 100%;
+    object-fit: contain;
     margin-top: -10px;
     margin-right: -5px;
     flex-shrink: 0;
@@ -1331,27 +1334,30 @@ body {
 
     .nav-content {
         gap: 0.75rem;
+        justify-content: space-between;
     }
 
     .logo {
         gap: 8px;
         font-size: 1rem;
-        flex: 1;
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: calc(100% - 44px);
     }
 
     .logo-img {
-        height: 56px;
+        height: 52px;
         margin-top: 0;
         margin-right: 0;
     }
 
     .logo-text {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        white-space: nowrap;
     }
 
     .nav-social {
-        gap: 0.5rem;
-        font-size: 1.15rem;
+        display: none;
     }
 
     .hamburger {
@@ -1423,19 +1429,15 @@ body {
 
     .logo {
         gap: 6px;
+        max-width: calc(100% - 38px);
     }
 
     .logo-img {
-        height: 46px;
+        height: 42px;
     }
 
     .logo-text {
-        font-size: 0.82rem;
-    }
-
-    .nav-social {
-        font-size: 1rem;
-        gap: 0.4rem;
+        font-size: 0.76rem;
     }
 
     .hamburger span {
