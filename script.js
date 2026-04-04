@@ -1,14 +1,3 @@
-// Refresh page when clicking 'Kreu' if already on index.html
-document.querySelectorAll('.nav-menu a[href$="#home"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        // Kontrollo nëse je në index.html
-        if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname === '') {
-            e.preventDefault();
-            window.location.href = 'index.html#home';
-            window.location.reload();
-        }
-    });
-});
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -28,14 +17,15 @@ if (hamburger) {
     });
 }
 
-// Smooth Scroll for Mobile
+// Smooth Scroll for local anchors only
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
+        const target = document.querySelector(href);
         // Vetem nese elementi ekziston ne kete faqe
-        if (href !== '#' && href.indexOf('/') === -1 && document.querySelector(href)) {
+        if (href !== '#' && target) {
             e.preventDefault();
-            document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
