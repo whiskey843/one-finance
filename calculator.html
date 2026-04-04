@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llogaritësi i Pagave - ONE FINANCE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="ONE FINANCE Logo" class="logo-img">
+                    <span class="logo-text">ONE FINANCE</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html#home">Kreu</a></li>
+                    <li><a href="index.html#about">Rreth Nesh</a></li>
+                    <li><a href="index.html#services">Shërbime</a></li>
+                    <li><a href="calculator.html">Llogaritësi i Pagave</a></li>
+                    <!-- <li><a href="jobs.html">Vende Pune</a></li> -->
+                    <!-- <li><a href="blog.html">Blog</a></li> -->
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="header-content">
+            <h1>Llogaritësi i Pagave në Kosovë</h1>
+            <p>Llogaritni pagën bruto dhe neto sipas ligjeve tatimore të Kosovës</p>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-wrapper">
+                <div class="calculator-form">
+                    <h2>Llogaritni pagën tuaj</h2>
+                    
+                    <div class="form-group">
+                        <label for="grossSalary">Paga Bruto (€)</label>
+                        <input type="number" id="grossSalary" placeholder="Futni pagën bruto" min="0" step="0.01">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dependents">Personat e varur</label>
+                        <select id="dependents">
+                            <option value="0">Pa persona të varur</option>
+                            <option value="1">1 person i varur</option>
+                            <option value="2">2 persona të varur</option>
+                            <option value="3">3 persona të varur</option>
+                            <option value="4">4 apo më shumë</option>
+                        </select>
+                    </div>
+
+                    <button onclick="calculateSalary()" class="calc-button">
+                        <i class="fas fa-calculator"></i> Llogarit
+                    </button>
+                </div>
+
+                <div class="calculator-results">
+                    <h2>Rezultatet</h2>
+                    
+                    <div class="result-item">
+                        <span class="label">Paga Bruto:</span>
+                        <span class="value" id="resultGross">0,00 €</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="label">Sigurimet Shoqërore (15%):</span>
+                        <span class="value" id="resultSocialEmp">0,00 €</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="label">Sigurimet Shëndetësore (1.7%):</span>
+                        <span class="value" id="resultHealthEmp">0,00 €</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="label">TAP (Tatimi mbi të ardhurat):</span>
+                        <span class="value" id="resultTAP">0,00 €</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="result-item highlight">
+                        <span class="label">Paga Neto:</span>
+                        <span class="value net" id="resultNet">0,00 €</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <h3>Kontributet e Punëdhënësit</h3>
+
+                    <div class="result-item">
+                        <span class="label">Sigurimet Shoqërore të Punëdhënësit (15%):</span>
+                        <span class="value" id="resultSocialEr">0,00 €</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="label">Sigurimet Shëndetësore të Punëdhënësit (1.7%):</span>
+                        <span class="value" id="resultHealthEr">0,00 €</span>
+                    </div>
+
+                    <div class="result-item highlight">
+                        <span class="label">Kostoja Totale për Punëdhënësin:</span>
+                        <span class="value cost" id="resultTotal">0,00 €</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculator-info">
+                <h3>Si funksionon llogaritësi?</h3>
+                <ul>
+                    <li><strong>Paga Bruto:</strong> Shuma e plotë e pagës para zbritjeve</li>
+                    <li><strong>Sigurimet Shoqërore Punëmarrës:</strong> 9.5% e pagës bruto</li>
+                    <li><strong>Sigurimet Shëndetësore Punëmarrës:</strong> 1.7% e pagës bruto</li>
+                    <li><strong>TAP:</strong> Tatim progresiv sipas shkallës (0%, 8%, 14% ose 18%)</li>
+                    <li><strong>Paga Neto:</strong> Paga bruto minus të gjitha zbritjet</li>
+                    <li><strong>Kontributet e Punëdhënësit:</strong> Plotësuese për punëdhënësin (15% sigurime shoqërore + 1.7% shëndetësore)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ONE FINANCE</h4>
+                    <p>Studio kontabiliteti me më shumë se 15 vite përvojë në financë dhe kontabilitet.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Më Ne</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; ONE FINANCE SHPK. Të gjitha të drejtat e rezervuara.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="calculator.js"></script>
+</body>
+</html>
