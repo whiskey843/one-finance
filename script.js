@@ -32,7 +32,8 @@ if (hamburger) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href !== '#' && document.querySelector(href)) {
+        // Vetem nese elementi ekziston ne kete faqe
+        if (href !== '#' && href.indexOf('/') === -1 && document.querySelector(href)) {
             e.preventDefault();
             document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
         }
