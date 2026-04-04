@@ -694,6 +694,11 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
+.footer-social {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
 /* Page Header */
 .page-header {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
