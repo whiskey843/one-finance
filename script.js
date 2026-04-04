@@ -1,10 +1,15 @@
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const navContent = document.querySelector('.nav-content');
 
 if (hamburger) {
     hamburger.addEventListener('click', () => {
-        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        const isOpen = navMenu.style.display === 'flex';
+        navMenu.style.display = isOpen ? 'none' : 'flex';
+        if (navContent) {
+            navContent.classList.toggle('menu-open', !isOpen);
+        }
     });
 
     // Close menu when a link is clicked ONLY on mobile
@@ -12,6 +17,9 @@ if (hamburger) {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 900) {
                 navMenu.style.display = 'none';
+                if (navContent) {
+                    navContent.classList.remove('menu-open');
+                }
             }
         });
     });

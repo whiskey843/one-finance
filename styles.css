@@ -1383,6 +1383,25 @@ body {
         font-size: 1.55rem;
     }
 
+    .nav-content.menu-open .nav-social {
+        top: 18px;
+        left: 96px;
+        right: auto;
+        transform: none;
+        z-index: 3;
+    }
+
+    .nav-content.menu-open .nav-menu {
+        display: flex;
+        position: absolute;
+        top: 12px;
+        right: 58px;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.96);
+        padding: 0.25rem 0;
+        z-index: 2;
+    }
+
     .about-logo-wrapper {
         justify-content: flex-start;
         margin-top: 2rem;
@@ -1487,6 +1506,16 @@ body {
         width: 28px;
         height: 28px;
         font-size: 1.45rem;
+    }
+
+    .nav-content.menu-open .nav-social {
+        top: 16px;
+        left: 84px;
+    }
+
+    .nav-content.menu-open .nav-menu {
+        top: 10px;
+        right: 48px;
     }
 
     .about {
