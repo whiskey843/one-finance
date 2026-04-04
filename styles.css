@@ -1374,6 +1374,15 @@ body {
         line-height: 1;
     }
 
+    .nav-social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        font-size: 1.55rem;
+    }
+
     .about-logo-wrapper {
         justify-content: flex-start;
         margin-top: 2rem;
@@ -1472,6 +1481,12 @@ body {
         right: 36px;
         gap: 0.55rem;
         font-size: 1.1rem;
+    }
+
+    .nav-social a {
+        width: 28px;
+        height: 28px;
+        font-size: 1.45rem;
     }
 
     .about {
