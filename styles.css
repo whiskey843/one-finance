@@ -89,6 +89,7 @@ body {
     color: var(--primary-color);
     font-size: 1.2rem;
     text-decoration: none;
+    min-width: 0;
 }
 
 .logo-img {
@@ -96,6 +97,11 @@ body {
     width: auto;
     margin-top: -10px;
     margin-right: -5px;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    line-height: 1.1;
 }
 
 .nav-menu {
@@ -1319,6 +1325,35 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 0;
+    }
+
+    .nav-content {
+        gap: 0.75rem;
+    }
+
+    .logo {
+        gap: 8px;
+        font-size: 1rem;
+        flex: 1;
+    }
+
+    .logo-img {
+        height: 56px;
+        margin-top: 0;
+        margin-right: 0;
+    }
+
+    .logo-text {
+        font-size: 0.95rem;
+    }
+
+    .nav-social {
+        gap: 0.5rem;
+        font-size: 1.15rem;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1378,6 +1413,35 @@ body {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .nav-content {
+        gap: 0.5rem;
+    }
+
+    .logo {
+        gap: 6px;
+    }
+
+    .logo-img {
+        height: 46px;
+    }
+
+    .logo-text {
+        font-size: 0.82rem;
+    }
+
+    .nav-social {
+        font-size: 1rem;
+        gap: 0.4rem;
+    }
+
+    .hamburger span {
+        width: 22px;
+    }
+
     .hero h1 {
         font-size: 1.5rem;
     }
