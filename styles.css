@@ -1384,7 +1384,7 @@ body {
     }
 
     .nav-content.menu-open .nav-social {
-        top: -10px;
+        top: -18px;
         left: 112px;
         right: auto;
         transform: none;
@@ -1514,7 +1514,7 @@ body {
     }
 
     .nav-content.menu-open .nav-social {
-        top: -8px;
+        top: -16px;
         left: 88px;
     }
 
