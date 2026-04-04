@@ -1367,7 +1367,7 @@ body {
         display: flex;
         position: absolute;
         top: 50%;
-        right: 48px;
+        right: 84px;
         transform: translateY(-50%);
         gap: 0.7rem;
         font-size: 1.25rem;
@@ -1478,7 +1478,7 @@ body {
     }
 
     .nav-social {
-        right: 36px;
+        right: 72px;
         gap: 0.55rem;
         font-size: 1.1rem;
     }
