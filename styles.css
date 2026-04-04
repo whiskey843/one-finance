@@ -25,6 +25,12 @@
     margin-left: auto;
     margin-right: 0;
 }
+
+.about-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 /* Global Styles */
 :root {
     --primary-color: #5b9ca8;
@@ -1360,6 +1366,18 @@ body {
         display: none;
     }
 
+    .about-logo-wrapper {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .about-logo-large {
+        max-width: 320px !important;
+        width: 100%;
+        margin: 0 auto !important;
+        padding: 12px;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -1440,6 +1458,27 @@ body {
         font-size: 0.76rem;
     }
 
+    .about {
+        padding: 60px 14px;
+    }
+
+    .about-content {
+        gap: 1.5rem;
+    }
+
+    .about-logo-wrapper {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .about-logo-large {
+        max-width: 240px !important;
+        width: calc(100vw - 80px);
+        margin: 0 auto !important;
+        padding: 10px;
+        border-radius: 14px;
+    }
+
     .hamburger span {
         width: 22px;
     }
@@ -1464,6 +1503,10 @@ body {
 }
 
 @media (max-width: 800px) {
+    .nav-social {
+        display: none;
+    }
+
   .nav-menu {
     flex-direction: column;
     gap: 1rem;
