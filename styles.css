@@ -710,10 +710,11 @@ body {
 }
 
 .phone-number {
-    color: rgba(255, 255, 255, 1) !important;
-    -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    -moz-text-fill-color: white !important;
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .footer-social {
@@ -1601,8 +1602,8 @@ body {
     }
 
     .phone-number {
-        color: rgba(255, 255, 255, 1) !important;
-        -webkit-text-fill-color: rgba(255, 255, 255, 1) !important;
+        color: white !important;
+        -webkit-text-fill-color: white !important;
     }
 
 @media (max-width: 800px) {
