@@ -195,7 +195,7 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 100%;
+    max-width: 560px;
     grid-column: 2;
 }
 
@@ -215,7 +215,6 @@ body {
 
 .owner-photo-container {
     position: relative;
-    left: auto;
     grid-column: 1;
     max-width: 280px;
 }
@@ -293,10 +292,10 @@ body {
 
 /* Owner Photo Container */
 .owner-photo-container {
-    position: absolute;
-    left: 50px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
     z-index: 3;
     text-align: center;
     max-width: 280px;
@@ -1628,6 +1627,44 @@ body {
     color: #ccc;
 }
 
+@media (max-width: 1200px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 50px 20px;
+    }
+
+    .owner-photo-container,
+    .hero-content,
+    .hero-logo {
+        grid-column: 1;
+    }
+
+    .owner-photo-container {
+        order: 1;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        order: 2;
+        max-width: 680px;
+    }
+
+    .hero-logo {
+        order: 3;
+    }
+
+    .stamp-logo {
+        width: 230px;
+        height: 230px;
+    }
+
+    .owner-photo {
+        width: 220px;
+        height: 220px;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
@@ -1736,7 +1773,7 @@ body {
         grid-template-columns: 1fr !important;
         gap: 1.5rem;
         padding: 40px 15px;
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         align-items: center;
     }
@@ -1745,6 +1782,7 @@ body {
         grid-column: auto;
         order: 2;
         width: 100%;
+        max-width: 100%;
     }
 
     .hero-logo {
@@ -1753,11 +1791,13 @@ body {
         width: 100%;
         display: flex;
         justify-content: center;
+        position: static !important;
+        margin-top: 0.5rem;
     }
 
     .stamp-logo {
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
     }
 
     .owner-photo-container {
@@ -1766,6 +1806,8 @@ body {
         max-width: 200px;
         margin: 0 auto;
         width: 100%;
+        position: static !important;
+        transform: none !important;
     }
 
     .owner-photo {
@@ -1896,8 +1938,50 @@ body {
     }
 
     .hero {
-        padding: 60px 20px;
-        min-height: 400px;
+        padding: 36px 14px;
+        min-height: auto;
+        gap: 1rem;
+    }
+
+    .hero-content {
+        order: 1;
+    }
+
+    .owner-photo-container {
+        order: 2;
+        max-width: 180px;
+        margin: 0 auto;
+    }
+
+    .owner-photo {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 12px;
+    }
+
+    .owner-info {
+        padding: 12px 16px;
+    }
+
+    .owner-info h3 {
+        font-size: 1rem;
+    }
+
+    .owner-info p {
+        font-size: 0.85rem;
+    }
+
+    .hero-logo {
+        order: 3;
+    }
+
+    .stamp-logo {
+        width: 130px;
+        height: 130px;
+    }
+
+    .cta-button {
+        padding: 10px 24px;
     }
 
     .services h2,
@@ -1913,6 +1997,7 @@ body {
         color: white !important;
         -webkit-text-fill-color: white !important;
     }
+}
 
 @media (max-width: 800px) {
   .nav-menu {
