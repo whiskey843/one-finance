@@ -710,7 +710,7 @@ body {
 }
 
 .phone-number {
-    color: #5b9ca8 !important;
+    color: rgba(255, 255, 255, 1) !important;
     font-weight: 600;
 }
 
