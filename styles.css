@@ -1015,12 +1015,39 @@ body {
     filter: grayscale(0.15);
 }
 
+.calc-button.button-ready {
+    background-color: #3f8f6b;
+    color: #ffffff;
+}
+
+.calc-button.button-ready:hover {
+    background-color: #34785a;
+}
+
 .calculate-btn {
     background-color: var(--primary-color);
 }
 
 .calculate-btn:hover {
     background-color: var(--secondary-color);
+}
+
+.calculator-status {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.status-idle {
+    color: var(--text-light);
+}
+
+.status-success {
+    color: #2f7a5a;
+}
+
+.status-error {
+    color: #b54747;
 }
 
 .atk-table-container {

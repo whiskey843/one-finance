@@ -7,7 +7,19 @@ function setAddButtonState(isEnabled) {
     const addEmployeeButton = document.getElementById('addEmployeeButton');
     if (addEmployeeButton) {
         addEmployeeButton.disabled = !isEnabled;
+        addEmployeeButton.classList.toggle('button-ready', isEnabled);
     }
+}
+
+function setCalculatorStatus(message, type) {
+    const statusElement = document.getElementById('calculatorStatus');
+    if (!statusElement) {
+        return;
+    }
+
+    statusElement.textContent = message;
+    statusElement.classList.remove('status-idle', 'status-success', 'status-error');
+    statusElement.classList.add(type);
 }
 
 // Set current date
@@ -57,18 +69,21 @@ function formatEuro(amount) {
 function resetPreview() {
     currentCalculation = null;
     setAddButtonState(false);
+    setCalculatorStatus('Klikoni "Llogarit" dhe pastaj "Shto Punonjësin".', 'status-idle');
 }
 
 function calculateSalaryPreview() {
     const grossSalary = parseFloat(document.getElementById('grossSalary').value);
 
     if (isNaN(grossSalary) || grossSalary <= 0) {
+        setCalculatorStatus('Shkruani një pagë bruto të vlefshme.', 'status-error');
         alert('Ju lutemi shkruani një pagë bruto të vlefshme');
         return;
     }
 
     currentCalculation = buildSalaryCalculation(grossSalary);
     setAddButtonState(true);
+    setCalculatorStatus('Llogaritja u bë. Tani klikoni "Shto Punonjësin".', 'status-success');
 }
 
 function addEmployee() {
@@ -77,11 +92,13 @@ function addEmployee() {
     const grossSalary = parseFloat(document.getElementById('grossSalary').value);
 
     if (!name || !personalId || isNaN(grossSalary) || grossSalary <= 0) {
+        setCalculatorStatus('Plotësoni të gjitha fushat para se ta shtoni punonjësin.', 'status-error');
         alert('Ju lutemi plotësoni të gjitha fushat saktë');
         return;
     }
 
     if (!currentCalculation || currentCalculation.grossSalary !== grossSalary) {
+        setCalculatorStatus('Së pari klikoni "Llogarit".', 'status-error');
         alert('Së pari klikoni "Llogarit" për ta llogaritur pagën.');
         return;
     }
@@ -105,6 +122,7 @@ function addEmployee() {
     document.getElementById('grossSalary').value = '';
     document.getElementById('employeeName').focus();
     resetPreview();
+    setCalculatorStatus('Punonjësi u shtua me sukses në tabelë.', 'status-success');
 
     updateEmployeeTable();
 }
@@ -119,6 +137,7 @@ function clearAll() {
         employees = [];
         employeeCounter = 1;
         updateEmployeeTable();
+        resetPreview();
     }
 }
 
@@ -173,7 +192,7 @@ window.clearAll = clearAll;
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     setCurrentDate();
-    setAddButtonState(false);
+    resetPreview();
 
     const calculateButton = document.getElementById('calculateButton');
     const addEmployeeButton = document.getElementById('addEmployeeButton');
