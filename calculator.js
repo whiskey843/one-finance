@@ -3,6 +3,13 @@ let employees = [];
 let employeeCounter = 1;
 let currentCalculation = null;
 
+function setAddButtonState(isEnabled) {
+    const addEmployeeButton = document.getElementById('addEmployeeButton');
+    if (addEmployeeButton) {
+        addEmployeeButton.disabled = !isEnabled;
+    }
+}
+
 // Set current date
 function setCurrentDate() {
     const currentDateElement = document.getElementById('currentDate');
@@ -47,21 +54,9 @@ function formatEuro(amount) {
     return `${amount.toFixed(2)} €`;
 }
 
-function updatePreview(calculation) {
-    document.getElementById('previewPersonal').textContent = formatEuro(calculation.personalContribution);
-    document.getElementById('previewEmployer').textContent = formatEuro(calculation.employerContribution);
-    document.getElementById('previewTaxable').textContent = formatEuro(calculation.taxableIncome);
-    document.getElementById('previewTax').textContent = formatEuro(calculation.tax);
-    document.getElementById('previewNet').textContent = formatEuro(calculation.netSalary);
-}
-
 function resetPreview() {
     currentCalculation = null;
-    document.getElementById('previewPersonal').textContent = '0.00 €';
-    document.getElementById('previewEmployer').textContent = '0.00 €';
-    document.getElementById('previewTaxable').textContent = '0.00 €';
-    document.getElementById('previewTax').textContent = '0.00 €';
-    document.getElementById('previewNet').textContent = '0.00 €';
+    setAddButtonState(false);
 }
 
 function calculateSalaryPreview() {
@@ -73,7 +68,7 @@ function calculateSalaryPreview() {
     }
 
     currentCalculation = buildSalaryCalculation(grossSalary);
-    updatePreview(currentCalculation);
+    setAddButtonState(true);
 }
 
 function addEmployee() {
@@ -173,10 +168,9 @@ function printPayroll() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     setCurrentDate();
+    setAddButtonState(false);
 
     const grossSalaryInput = document.getElementById('grossSalary');
-    const employeeNameInput = document.getElementById('employeeName');
-    const personalIdInput = document.getElementById('personalId');
 
     if (grossSalaryInput) {
         grossSalaryInput.addEventListener('input', resetPreview);
@@ -187,19 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    if (employeeNameInput) {
-        employeeNameInput.addEventListener('input', function () {
-            if (currentCalculation) {
-                return;
-            }
-        });
-    }
-
-    if (personalIdInput) {
-        personalIdInput.addEventListener('input', function () {
-            if (currentCalculation) {
-                return;
-            }
-        });
-    }
+    document.getElementById('employeeName').addEventListener('input', resetPreview);
+    document.getElementById('personalId').addEventListener('input', resetPreview);
 });

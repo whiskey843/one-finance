@@ -1009,54 +1009,18 @@ body {
     margin-top: 0.5rem;
 }
 
+.calc-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.15);
+}
+
 .calculate-btn {
     background-color: var(--primary-color);
 }
 
 .calculate-btn:hover {
     background-color: var(--secondary-color);
-}
-
-.calculator-preview {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    border: 1px solid rgba(91, 156, 168, 0.18);
-    border-radius: var(--border-radius);
-    background: linear-gradient(180deg, rgba(248, 249, 250, 0.95) 0%, rgba(232, 244, 248, 0.95) 100%);
-}
-
-.calculator-preview h4 {
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-}
-
-.preview-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-}
-
-.preview-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    padding: 0.9rem;
-    border-radius: var(--border-radius);
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.preview-item span {
-    font-size: 0.88rem;
-    color: var(--text-light);
-}
-
-.preview-item strong {
-    color: var(--primary-color);
-    font-size: 1rem;
-}
-
-.preview-item-full {
-    grid-column: 1 / -1;
 }
 
 .atk-table-container {
@@ -1899,7 +1863,7 @@ body {
     }
 
     .calculator-button-row,
-    .preview-grid {
+    .calculator-button-row {
         grid-template-columns: 1fr;
     }
 
