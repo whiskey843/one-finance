@@ -1072,11 +1072,11 @@ body {
 }
 
 .delete-btn {
-    background-color: #ff6b6b;
+    background-color: var(--primary-color);
 }
 
 .delete-btn:hover {
-    background-color: #ff5252;
+    background-color: var(--secondary-color);
 }
 
 @media print {
