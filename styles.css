@@ -1067,6 +1067,7 @@ body {
     min-width: 1100px;
     border-collapse: collapse;
     font-size: 0.9rem;
+    table-layout: auto;
 }
 
 .atk-table thead {
@@ -1079,6 +1080,28 @@ body {
     text-align: left;
     font-weight: 600;
     border: 1px solid #ddd;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.atk-table thead th:first-child,
+.atk-table tbody td:first-child {
+    min-width: 56px;
+}
+
+.atk-table thead th:nth-child(2),
+.atk-table tbody td:nth-child(2) {
+    min-width: 170px;
+}
+
+.atk-table thead th:nth-child(3),
+.atk-table tbody td:nth-child(3) {
+    min-width: 140px;
+}
+
+.atk-table thead th:last-child,
+.atk-table tbody td:last-child {
+    min-width: 90px;
 }
 
 .atk-table tbody td {
@@ -1105,6 +1128,7 @@ body {
     padding: 12px 8px;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
+    white-space: nowrap;
 }
 
 .btn-delete {
