@@ -204,8 +204,8 @@ body {
 }
 
 .stamp-logo {
-    width: 200px;
-    height: 200px;
+    width: 280px;
+    height: 280px;
     object-fit: contain;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
 }
