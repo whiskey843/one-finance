@@ -22,6 +22,16 @@ function setCalculatorStatus(message, type) {
     statusElement.classList.add(type);
 }
 
+function getGrossSalaryValue() {
+    const grossSalaryInput = document.getElementById('grossSalary');
+    if (!grossSalaryInput) {
+        return NaN;
+    }
+
+    const normalizedValue = grossSalaryInput.value.replace(/\s+/g, '').replace(',', '.');
+    return parseFloat(normalizedValue);
+}
+
 // Set current date
 function setCurrentDate() {
     const currentDateElement = document.getElementById('currentDate');
@@ -73,7 +83,7 @@ function resetPreview() {
 }
 
 function calculateSalaryPreview() {
-    const grossSalary = parseFloat(document.getElementById('grossSalary').value);
+    const grossSalary = getGrossSalaryValue();
 
     if (isNaN(grossSalary) || grossSalary <= 0) {
         setCalculatorStatus('Shkruani një pagë bruto të vlefshme.', 'status-error');
@@ -89,15 +99,14 @@ function calculateSalaryPreview() {
 function addEmployee() {
     const name = document.getElementById('employeeName').value.trim();
     const personalId = document.getElementById('personalId').value.trim();
-    const grossSalary = parseFloat(document.getElementById('grossSalary').value);
 
-    if (!name || !personalId || isNaN(grossSalary) || grossSalary <= 0) {
-        setCalculatorStatus('Plotësoni të gjitha fushat para se ta shtoni punonjësin.', 'status-error');
-        alert('Ju lutemi plotësoni të gjitha fushat saktë');
+    if (!name || !personalId) {
+        setCalculatorStatus('Plotësoni emrin dhe numrin personal para se ta shtoni punonjësin.', 'status-error');
+        alert('Ju lutemi plotësoni emrin dhe numrin personal.');
         return;
     }
 
-    if (!currentCalculation || currentCalculation.grossSalary !== grossSalary) {
+    if (!currentCalculation) {
         setCalculatorStatus('Së pari klikoni "Llogarit".', 'status-error');
         alert('Së pari klikoni "Llogarit" për ta llogaritur pagën.');
         return;
@@ -212,6 +221,7 @@ document.addEventListener('DOMContentLoaded', function () {
         grossSalaryInput.addEventListener('input', resetPreview);
         grossSalaryInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 calculateSalaryPreview();
             }
         });
