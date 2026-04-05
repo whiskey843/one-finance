@@ -1,5 +1,5 @@
 // ATK Payroll Calculator
-const CALCULATOR_PAGE_VERSION = '20260406-10';
+const CALCULATOR_PAGE_VERSION = '20260406-11';
 
 if (!window.location.search.includes(`v=${CALCULATOR_PAGE_VERSION}`)) {
     const params = new URLSearchParams(window.location.search);
@@ -161,7 +161,9 @@ function clearAll() {
 
 function updateEmployeeTable() {
     const tbody = document.getElementById('employeeTableBody');
+    const mobileEmployeeList = document.getElementById('mobileEmployeeList');
     tbody.innerHTML = '';
+    mobileEmployeeList.innerHTML = '';
 
     let totalGross = 0, totalPersonal = 0, totalEmployer = 0, totalTaxable = 0, totalTax = 0, totalNet = 0;
 
@@ -180,6 +182,23 @@ function updateEmployeeTable() {
             <td data-label="Veprim"><button onclick="removeEmployee(${emp.id})" class="btn-delete"><i class="fas fa-trash"></i></button></td>
         `;
         tbody.appendChild(row);
+
+        const card = document.createElement('div');
+        card.className = 'mobile-employee-card';
+        card.innerHTML = `
+            <div class="mobile-employee-card__header">
+                <strong>${index + 1}. ${emp.name}</strong>
+                <button onclick="removeEmployee(${emp.id})" class="btn-delete"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="mobile-employee-card__row"><span>Numri Personal</span><strong>${emp.personalId}</strong></div>
+            <div class="mobile-employee-card__row"><span>Paga BRUTO</span><strong>${emp.grossSalary.toFixed(2)}</strong></div>
+            <div class="mobile-employee-card__row"><span>Kontributi personal</span><strong>${emp.personalContribution.toFixed(2)}</strong></div>
+            <div class="mobile-employee-card__row"><span>Kontributi punëdhënësit</span><strong>${emp.employerContribution.toFixed(2)}</strong></div>
+            <div class="mobile-employee-card__row"><span>Të ardhurat e tatuesimit</span><strong>${emp.taxableIncome.toFixed(2)}</strong></div>
+            <div class="mobile-employee-card__row"><span>Tatimi në burim</span><strong>${emp.tax.toFixed(2)}</strong></div>
+            <div class="mobile-employee-card__row is-net"><span>Paga NETO</span><strong>${emp.netSalary.toFixed(2)}</strong></div>
+        `;
+        mobileEmployeeList.appendChild(card);
 
         totalGross += emp.grossSalary;
         totalPersonal += emp.personalContribution;
