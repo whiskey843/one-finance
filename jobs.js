@@ -38,10 +38,3 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
-// Add smooth scrolling for the apply buttons
-document.querySelectorAll('.apply-btn').forEach(button => {
-    button.addEventListener('click', function (e) {
-        e.preventDefault();
-    });
-});
