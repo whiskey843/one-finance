@@ -39,16 +39,6 @@
         </div>
     </nav>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; ONE FINANCE SHPK. Të gjitha të drejtat e rezervuara.<br>
-                Kjo webfaqe u realizua nga Visar Xhemaili <span class="phone-number">+383 43 843 908</span></p>
-            </div>
-        </div>
-    </footer>
-
     <!-- Page Header -->
     <section class="page-header">
         <div class="header-content">
@@ -60,96 +50,92 @@
     <!-- Calculator Section -->
     <section class="calculator-section">
         <div class="container">
+            <div class="atk-header">
+                <h2>LISTA E PAGAVE</h2>
+            </div>
+
             <div class="calculator-wrapper">
                 <div class="calculator-form">
-                    <h2>Llogaritni pagën tuaj</h2>
+                    <h3>Shto Punonjës</h3>
                     
-                    <div class="form-group">
-                        <label for="grossSalary">Paga Bruto (€)</label>
-                        <input type="number" id="grossSalary" placeholder="Futni pagën bruto" min="0" step="0.01">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employeeName">Emri dhe Mbiemri</label>
+                            <input type="text" id="employeeName" placeholder="Emri">
+                        </div>
+                        <div class="form-group">
+                            <label for="personalId">Numri Personal</label>
+                            <input type="text" id="personalId" placeholder="NNNNNNNNN">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="dependents">Personat e varur</label>
-                        <select id="dependents">
-                            <option value="0">Pa persona të varur</option>
-                            <option value="1">1 person i varur</option>
-                            <option value="2">2 persona të varur</option>
-                            <option value="3">3 persona të varur</option>
-                            <option value="4">4 apo më shumë</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="grossSalary">Paga Bruto (€)</label>
+                            <input type="number" id="grossSalary" placeholder="0.00" min="0" step="0.01">
+                        </div>
                     </div>
 
-                    <button onclick="calculateSalary()" class="calc-button">
-                        <i class="fas fa-calculator"></i> Llogarit
+                    <button onclick="addEmployee()" class="calc-button">
+                        <i class="fas fa-plus"></i> Shto Punonjësin
                     </button>
-                </div>
-
-                <div class="calculator-results">
-                    <h2>Rezultatet</h2>
-                    
-                    <div class="result-item">
-                        <span class="label">Paga Bruto:</span>
-                        <span class="value" id="resultGross">0,00 €</span>
-                    </div>
-
-                    <div class="result-item">
-                        <span class="label">Sigurimet Shoqërore (15%):</span>
-                        <span class="value" id="resultSocialEmp">0,00 €</span>
-                    </div>
-
-                    <div class="result-item">
-                        <span class="label">Sigurimet Shëndetësore (1.7%):</span>
-                        <span class="value" id="resultHealthEmp">0,00 €</span>
-                    </div>
-
-                    <div class="result-item">
-                        <span class="label">TAP (Tatimi mbi të ardhurat):</span>
-                        <span class="value" id="resultTAP">0,00 €</span>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <div class="result-item highlight">
-                        <span class="label">Paga Neto:</span>
-                        <span class="value net" id="resultNet">0,00 €</span>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <h3>Kontributet e Punëdhënësit</h3>
-
-                    <div class="result-item">
-                        <span class="label">Sigurimet Shoqërore të Punëdhënësit (15%):</span>
-                        <span class="value" id="resultSocialEr">0,00 €</span>
-                    </div>
-
-                    <div class="result-item">
-                        <span class="label">Sigurimet Shëndetësore të Punëdhënësit (1.7%):</span>
-                        <span class="value" id="resultHealthEr">0,00 €</span>
-                    </div>
-
-                    <div class="result-item highlight">
-                        <span class="label">Kostoja Totale për Punëdhënësin:</span>
-                        <span class="value cost" id="resultTotal">0,00 €</span>
-                    </div>
                 </div>
             </div>
 
-            <div class="calculator-info">
-                <h3>Si funksionon llogaritësi?</h3>
-                <ul>
-                    <li><strong>Paga Bruto:</strong> Shuma e plotë e pagës para zbritjeve</li>
-                    <li><strong>Sigurimet Shoqërore Punëmarrës:</strong> 9.5% e pagës bruto</li>
-                    <li><strong>Sigurimet Shëndetësore Punëmarrës:</strong> 1.7% e pagës bruto</li>
-                    <li><strong>TAP:</strong> Tatim progresiv sipas shkallës (0%, 8%, 14% ose 18%)</li>
-                    <li><strong>Paga Neto:</strong> Paga bruto minus të gjitha zbritjet</li>
-                    <li><strong>Kontributet e Punëdhënësit:</strong> Plotësuese për punëdhënësin (15% sigurime shoqërore + 1.7% shëndetësore)</li>
-                </ul>
+            <div class="atk-table-container">
+                <table class="atk-table">
+                    <thead>
+                        <tr>
+                            <th>N.</th>
+                            <th>Emri dhe Mbiemri</th>
+                            <th>Numri Personal</th>
+                            <th>Paga BRUTO</th>
+                            <th>Kontributi personal i të punësarit (5%)</th>
+                            <th>Kontributi personal i punëdhënësit (5%)</th>
+                            <th>Të ardhurat e tatuesimit</th>
+                            <th>Tatimi i majur në burim</th>
+                            <th>Paga NETO</th>
+                            <th>Veprim</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTableBody">
+                        <!-- Employees will be added here -->
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="3"><strong>GJITHSEJTË</strong></td>
+                            <td class="amount"><strong id="totalGross">0.00</strong></td>
+                            <td class="amount"><strong id="totalPersonal">0.00</strong></td>
+                            <td class="amount"><strong id="totalEmployer">0.00</strong></td>
+                            <td class="amount"><strong id="totalTaxable">0.00</strong></td>
+                            <td class="amount"><strong id="totalTax">0.00</strong></td>
+                            <td class="amount"><strong id="totalNet">0.00</strong></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="calculator-actions">
+                <button onclick="printPayroll()" class="calc-button print-btn">
+                    <i class="fas fa-print"></i> Printo
+                </button>
+                <button onclick="clearAll()" class="calc-button delete-btn">
+                    <i class="fas fa-trash"></i> Pastro të Gjitha
+                </button>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; ONE FINANCE SHPK. Të gjitha të drejtat e rezervuara.<br>
+                Kjo webfaqe u realizua nga Visar Xhemaili <span class="phone-number">+383 43 843 908</span></p>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
     <script src="calculator.js"></script>

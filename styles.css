@@ -266,6 +266,49 @@ body {
     transform: rotate(45deg);
 }
 
+/* Owner Photo Container */
+.owner-photo-container {
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    text-align: center;
+    max-width: 280px;
+}
+
+.owner-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 8px solid white;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.owner-info {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.owner-info h3 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.owner-info p {
+    color: #5b9ca8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0;
+}
+
 /* About Section */
 .about {
     padding: 80px 20px;
@@ -897,6 +940,153 @@ body {
     padding: 0.5rem 0;
     color: var(--text-light);
     line-height: 1.8;
+}
+
+/* ATK Styles */
+.atk-header {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.atk-header h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.atk-header p {
+    color: var(--text-light);
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    margin-bottom: 1rem;
+}
+
+.atk-table-container {
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.atk-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.atk-table thead {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+}
+
+.atk-table thead th {
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid #ddd;
+}
+
+.atk-table tbody td {
+    padding: 10px 8px;
+    border: 1px solid #eee;
+    color: var(--text-dark);
+}
+
+.atk-table tbody tr {
+    transition: var(--transition);
+}
+
+.atk-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.atk-table tfoot {
+    background-color: #f0f0f0;
+    font-weight: 600;
+}
+
+.atk-table tfoot .total-row td {
+    padding: 12px 8px;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-delete {
+    padding: 6px 10px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+    background-color: #ff5252;
+}
+
+.atk-table .amount {
+    text-align: right;
+    font-family: 'Courier New', monospace;
+}
+
+.atk-table .highlight-yellow {
+    background-color: #ffff00;
+    font-weight: 600;
+}
+
+.calculator-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.print-btn {
+    background-color: var(--primary-color);
+}
+
+.print-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.delete-btn {
+    background-color: #ff6b6b;
+}
+
+.delete-btn:hover {
+    background-color: #ff5252;
+}
+
+@media print {
+    .calculator-actions {
+        display: none;
+    }
+    
+    .atk-table {
+        font-size: 10px;
+    }
 }
 
 /* Jobs Section */
