@@ -165,12 +165,29 @@ function printPayroll() {
     window.print();
 }
 
+window.calculateSalaryPreview = calculateSalaryPreview;
+window.addEmployee = addEmployee;
+window.removeEmployee = removeEmployee;
+window.clearAll = clearAll;
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     setCurrentDate();
     setAddButtonState(false);
 
+    const calculateButton = document.getElementById('calculateButton');
+    const addEmployeeButton = document.getElementById('addEmployeeButton');
     const grossSalaryInput = document.getElementById('grossSalary');
+    const employeeNameInput = document.getElementById('employeeName');
+    const personalIdInput = document.getElementById('personalId');
+
+    if (calculateButton) {
+        calculateButton.addEventListener('click', calculateSalaryPreview);
+    }
+
+    if (addEmployeeButton) {
+        addEmployeeButton.addEventListener('click', addEmployee);
+    }
 
     if (grossSalaryInput) {
         grossSalaryInput.addEventListener('input', resetPreview);
@@ -181,6 +198,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    document.getElementById('employeeName').addEventListener('input', resetPreview);
-    document.getElementById('personalId').addEventListener('input', resetPreview);
+    if (employeeNameInput) {
+        employeeNameInput.addEventListener('input', resetPreview);
+    }
+
+    if (personalIdInput) {
+        personalIdInput.addEventListener('input', resetPreview);
+    }
 });
