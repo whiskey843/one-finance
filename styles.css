@@ -709,6 +709,11 @@ body {
     border-radius: 4px;
 }
 
+.phone-number {
+    color: #5b9ca8 !important;
+    font-weight: 600;
+}
+
 .footer-social {
     justify-content: center;
     margin-bottom: 1.5rem;
