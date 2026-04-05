@@ -1502,6 +1502,21 @@ body {
     .jobs-grid {
         grid-template-columns: 1fr;
     }
+
+    .footer-bottom {
+        padding-top: 15px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.85rem;
+        padding: 15px 8px !important;
+        line-height: 1.6;
+    }
+
+    .phone-number {
+        display: inline;
+        word-break: break-word;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1592,7 +1607,21 @@ body {
     .stats-grid {
         grid-template-columns: 1fr;
     }
-}
+
+    .footer-bottom {
+        padding-top: 12px;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8rem;
+        padding: 12px 6px !important;
+        line-height: 1.5;
+    }
+
+    .phone-number {
+        display: inline;
+        word-break: break-word;
+    }
 
 @media (max-width: 800px) {
   .nav-menu {
