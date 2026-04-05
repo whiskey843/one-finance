@@ -1157,10 +1157,14 @@ body {
     box-shadow: var(--shadow);
     padding: 1.25rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .mobile-employee-list {
     display: none;
+    position: relative;
+    z-index: 2;
 }
 
 .mobile-employee-card {
@@ -1169,6 +1173,8 @@ body {
     box-shadow: var(--shadow);
     padding: 1rem;
     margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .mobile-employee-card__header {
@@ -1197,11 +1203,11 @@ body {
 }
 
 .mobile-employee-card__row span {
-    color: var(--text-light);
+    color: var(--text-dark);
 }
 
 .mobile-employee-card__row strong {
-    color: var(--primary-color);
+    color: var(--text-dark);
     text-align: right;
 }
 
@@ -1211,6 +1217,26 @@ body {
 
 .mobile-totals-card h3 {
     color: var(--primary-color);
+}
+
+.mobile-total-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e7eef0;
+}
+
+.mobile-total-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-total-item span {
+    color: var(--text-dark);
+}
+
+.mobile-total-item strong {
+    color: var(--text-dark);
 }
 
 .jobs-header {
