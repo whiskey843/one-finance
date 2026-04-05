@@ -1,4 +1,13 @@
 // ATK Payroll Calculator
+const CALCULATOR_PAGE_VERSION = '20260406-10';
+
+if (!window.location.search.includes(`v=${CALCULATOR_PAGE_VERSION}`)) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('v', CALCULATOR_PAGE_VERSION);
+    const targetUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+    window.location.replace(targetUrl);
+}
+
 let employees = [];
 let employeeCounter = 1;
 let currentCalculation = null;
