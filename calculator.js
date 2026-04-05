@@ -168,16 +168,16 @@ function updateEmployeeTable() {
     employees.forEach((emp, index) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${emp.name}</td>
-            <td>${emp.personalId}</td>
-            <td class="amount">${emp.grossSalary.toFixed(2)}</td>
-            <td class="amount">${emp.personalContribution.toFixed(2)}</td>
-            <td class="amount">${emp.employerContribution.toFixed(2)}</td>
-            <td class="amount">${emp.taxableIncome.toFixed(2)}</td>
-            <td class="amount">${emp.tax.toFixed(2)}</td>
-            <td class="amount">${emp.netSalary.toFixed(2)}</td>
-            <td><button onclick="removeEmployee(${emp.id})" class="btn-delete"><i class="fas fa-trash"></i></button></td>
+            <td data-label="N.">${index + 1}</td>
+            <td data-label="Emri dhe Mbiemri">${emp.name}</td>
+            <td data-label="Numri Personal">${emp.personalId}</td>
+            <td data-label="Paga BRUTO" class="amount">${emp.grossSalary.toFixed(2)}</td>
+            <td data-label="Kontributi personal (5%)" class="amount">${emp.personalContribution.toFixed(2)}</td>
+            <td data-label="Kontributi punëdhënësit (5%)" class="amount">${emp.employerContribution.toFixed(2)}</td>
+            <td data-label="Të ardhurat e tatuesimit" class="amount">${emp.taxableIncome.toFixed(2)}</td>
+            <td data-label="Tatimi në burim" class="amount">${emp.tax.toFixed(2)}</td>
+            <td data-label="Paga NETO" class="amount">${emp.netSalary.toFixed(2)}</td>
+            <td data-label="Veprim"><button onclick="removeEmployee(${emp.id})" class="btn-delete"><i class="fas fa-trash"></i></button></td>
         `;
         tbody.appendChild(row);
 
@@ -196,6 +196,13 @@ function updateEmployeeTable() {
     document.getElementById('totalTaxable').textContent = totalTaxable.toFixed(2);
     document.getElementById('totalTax').textContent = totalTax.toFixed(2);
     document.getElementById('totalNet').textContent = totalNet.toFixed(2);
+
+    document.getElementById('mobileTotalGross').textContent = totalGross.toFixed(2);
+    document.getElementById('mobileTotalPersonal').textContent = totalPersonal.toFixed(2);
+    document.getElementById('mobileTotalEmployer').textContent = totalEmployer.toFixed(2);
+    document.getElementById('mobileTotalTaxable').textContent = totalTaxable.toFixed(2);
+    document.getElementById('mobileTotalTax').textContent = totalTax.toFixed(2);
+    document.getElementById('mobileTotalNet').textContent = totalNet.toFixed(2);
 }
 
 function printPayroll() {

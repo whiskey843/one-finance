@@ -1165,6 +1165,40 @@ body {
     z-index: 2;
 }
 
+.mobile-totals-card {
+    display: none;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.mobile-totals-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.mobile-total-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e7eef0;
+}
+
+.mobile-total-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-total-item span {
+    color: var(--text-light);
+}
+
+.mobile-total-item strong {
+    color: var(--primary-color);
+}
+
 .print-btn {
     background-color: var(--primary-color);
 }
@@ -1923,12 +1957,76 @@ body {
     }
 
     .atk-table-container {
-        border-radius: 12px;
+        overflow: visible;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .atk-table,
+    .atk-table thead,
+    .atk-table tbody,
+    .atk-table tr,
+    .atk-table td {
+        display: block;
+        width: 100%;
     }
 
     .atk-table {
-        min-width: 980px;
-        font-size: 0.84rem;
+        min-width: 0;
+        font-size: 0.95rem;
+    }
+
+    .atk-table thead,
+    .atk-table tfoot {
+        display: none;
+    }
+
+    .atk-table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .atk-table tbody tr {
+        background-color: white;
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 0.85rem 1rem;
+        overflow: hidden;
+    }
+
+    .atk-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.7rem 0;
+        white-space: normal;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid #edf2f4;
+        min-width: 0;
+    }
+
+    .atk-table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    .atk-table tbody td::before {
+        content: attr(data-label);
+        color: var(--text-dark);
+        font-weight: 600;
+        text-align: left;
+        flex: 0 0 48%;
+    }
+
+    .atk-table .amount {
+        text-align: right;
+    }
+
+    .mobile-totals-card {
+        display: block;
     }
 
     .page-header {
