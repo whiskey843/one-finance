@@ -56,6 +56,9 @@
             <p>Përvojë 15+ vjeqare në kontabilitet, auditim dhe konsultim tatimor</p>
             <a href="#contact" class="cta-button">Na Kontaktoni</a>
         </div>
+        <div class="hero-logo">
+            <img src="stamp.jpg" alt="ONE FINANCE Stamp Logo" class="stamp-logo">
+        </div>
     </section>
 
     <!-- About Section -->
@@ -250,7 +253,9 @@
                         <i class="fas fa-briefcase"></i>
                         <div>
                             <h4>Numri i Biznesit</h4>
-                            <p>812028737</p>
+                            <p style="cursor: pointer;" onclick="openCertificateModal()">
+                                <span style="text-decoration: underline;">812028737</span>
+                            </p>
                         </div>
                     </div>
 
@@ -285,6 +290,32 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <span class="modal-close" onclick="closeCertificateModal()">&times;</span>
+        <img class="modal-content" id="certificateImage" src="certificate.jpg" alt="Sertifikata e Biznesit">
+    </div>
+
+    <script>
+        function openCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
 
