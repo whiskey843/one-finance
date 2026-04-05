@@ -1,30 +1,25 @@
 // ATK Payroll Calculator
 let employees = [];
 let employeeCounter = 1;
+let currentCalculation = null;
 
 // Set current date
 function setCurrentDate() {
-    const today = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('currentDate').textContent = today.toLocaleDateString('sq-AL', options);
-}
-
-function addEmployee() {
-    const name = document.getElementById('employeeName').value.trim();
-    const personalId = document.getElementById('personalId').value.trim();
-    const grossSalary = parseFloat(document.getElementById('grossSalary').value);
-
-    if (!name || !personalId || isNaN(grossSalary) || grossSalary <= 0) {
-        alert('Ju lutemi plotësoni të gjitha fushat saktë');
+    const currentDateElement = document.getElementById('currentDate');
+    if (!currentDateElement) {
         return;
     }
 
-    // Calculate deductions (5% each)
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    currentDateElement.textContent = today.toLocaleDateString('sq-AL', options);
+}
+
+function buildSalaryCalculation(grossSalary) {
     const personalContribution = grossSalary * 0.05;
     const employerContribution = grossSalary * 0.05;
     const taxableIncome = grossSalary - personalContribution;
-    
-    // Calculate TAP (Income Tax)
+
     let tax = 0;
     if (taxableIncome <= 10000) {
         tax = 0;
@@ -38,28 +33,84 @@ function addEmployee() {
 
     const netSalary = taxableIncome - tax;
 
-    // Create employee object
+    return {
+        grossSalary,
+        personalContribution,
+        employerContribution,
+        taxableIncome,
+        tax,
+        netSalary
+    };
+}
+
+function formatEuro(amount) {
+    return `${amount.toFixed(2)} €`;
+}
+
+function updatePreview(calculation) {
+    document.getElementById('previewPersonal').textContent = formatEuro(calculation.personalContribution);
+    document.getElementById('previewEmployer').textContent = formatEuro(calculation.employerContribution);
+    document.getElementById('previewTaxable').textContent = formatEuro(calculation.taxableIncome);
+    document.getElementById('previewTax').textContent = formatEuro(calculation.tax);
+    document.getElementById('previewNet').textContent = formatEuro(calculation.netSalary);
+}
+
+function resetPreview() {
+    currentCalculation = null;
+    document.getElementById('previewPersonal').textContent = '0.00 €';
+    document.getElementById('previewEmployer').textContent = '0.00 €';
+    document.getElementById('previewTaxable').textContent = '0.00 €';
+    document.getElementById('previewTax').textContent = '0.00 €';
+    document.getElementById('previewNet').textContent = '0.00 €';
+}
+
+function calculateSalaryPreview() {
+    const grossSalary = parseFloat(document.getElementById('grossSalary').value);
+
+    if (isNaN(grossSalary) || grossSalary <= 0) {
+        alert('Ju lutemi shkruani një pagë bruto të vlefshme');
+        return;
+    }
+
+    currentCalculation = buildSalaryCalculation(grossSalary);
+    updatePreview(currentCalculation);
+}
+
+function addEmployee() {
+    const name = document.getElementById('employeeName').value.trim();
+    const personalId = document.getElementById('personalId').value.trim();
+    const grossSalary = parseFloat(document.getElementById('grossSalary').value);
+
+    if (!name || !personalId || isNaN(grossSalary) || grossSalary <= 0) {
+        alert('Ju lutemi plotësoni të gjitha fushat saktë');
+        return;
+    }
+
+    if (!currentCalculation || currentCalculation.grossSalary !== grossSalary) {
+        alert('Së pari klikoni "Llogarit" për ta llogaritur pagën.');
+        return;
+    }
+
     const employee = {
         id: employeeCounter++,
         name: name,
         personalId: personalId,
-        grossSalary: grossSalary,
-        personalContribution: personalContribution,
-        employerContribution: employerContribution,
-        taxableIncome: taxableIncome,
-        tax: tax,
-        netSalary: netSalary
+        grossSalary: currentCalculation.grossSalary,
+        personalContribution: currentCalculation.personalContribution,
+        employerContribution: currentCalculation.employerContribution,
+        taxableIncome: currentCalculation.taxableIncome,
+        tax: currentCalculation.tax,
+        netSalary: currentCalculation.netSalary
     };
 
     employees.push(employee);
-    
-    // Clear form
+
     document.getElementById('employeeName').value = '';
     document.getElementById('personalId').value = '';
     document.getElementById('grossSalary').value = '';
     document.getElementById('employeeName').focus();
+    resetPreview();
 
-    // Update table
     updateEmployeeTable();
 }
 
@@ -122,12 +173,32 @@ function printPayroll() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function () {
     setCurrentDate();
-    
+
     const grossSalaryInput = document.getElementById('grossSalary');
+    const employeeNameInput = document.getElementById('employeeName');
+    const personalIdInput = document.getElementById('personalId');
+
     if (grossSalaryInput) {
+        grossSalaryInput.addEventListener('input', resetPreview);
         grossSalaryInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
-                addEmployee();
+                calculateSalaryPreview();
+            }
+        });
+    }
+
+    if (employeeNameInput) {
+        employeeNameInput.addEventListener('input', function () {
+            if (currentCalculation) {
+                return;
+            }
+        });
+    }
+
+    if (personalIdInput) {
+        personalIdInput.addEventListener('input', function () {
+            if (currentCalculation) {
+                return;
             }
         });
     }

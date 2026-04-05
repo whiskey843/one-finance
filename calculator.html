@@ -76,9 +76,40 @@
                         </div>
                     </div>
 
-                    <button onclick="addEmployee()" class="calc-button">
-                        <i class="fas fa-plus"></i> Shto Punonjësin
-                    </button>
+                    <div class="calculator-button-row">
+                        <button onclick="calculateSalaryPreview()" class="calc-button calculate-btn" type="button">
+                            <i class="fas fa-calculator"></i> Llogarit
+                        </button>
+                        <button onclick="addEmployee()" class="calc-button" type="button">
+                            <i class="fas fa-plus"></i> Shto Punonjësin
+                        </button>
+                    </div>
+
+                    <div class="calculator-preview" id="calculatorPreview">
+                        <h4>Rezultati i Llogaritjes</h4>
+                        <div class="preview-grid">
+                            <div class="preview-item">
+                                <span>Kontributi personal</span>
+                                <strong id="previewPersonal">0.00 €</strong>
+                            </div>
+                            <div class="preview-item">
+                                <span>Kontributi punëdhënësit</span>
+                                <strong id="previewEmployer">0.00 €</strong>
+                            </div>
+                            <div class="preview-item">
+                                <span>Të ardhurat e tatuesimit</span>
+                                <strong id="previewTaxable">0.00 €</strong>
+                            </div>
+                            <div class="preview-item">
+                                <span>Tatimi në burim</span>
+                                <strong id="previewTax">0.00 €</strong>
+                            </div>
+                            <div class="preview-item preview-item-full">
+                                <span>Paga neto</span>
+                                <strong id="previewNet">0.00 €</strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
