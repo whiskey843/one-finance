@@ -1803,16 +1803,18 @@ body {
     }
 
     .nav-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        align-items: center;
         gap: 0.75rem;
-        justify-content: space-between;
     }
 
     .logo {
         gap: 8px;
         font-size: 1rem;
-        flex: 1 1 auto;
         min-width: 0;
-        max-width: calc(100% - 160px);
+        max-width: none;
+        grid-column: 1;
     }
 
     .logo-img {
@@ -1828,13 +1830,13 @@ body {
 
     .nav-social {
         display: flex;
-        position: absolute;
-        top: 50%;
-        right: 84px;
-        transform: translateY(-50%);
+        position: static;
+        transform: none;
         gap: 0.7rem;
         font-size: 1.25rem;
         line-height: 1;
+        grid-column: 2;
+        justify-self: end;
     }
 
     .nav-social a {
@@ -1844,14 +1846,6 @@ body {
         width: 30px;
         height: 30px;
         font-size: 1.55rem;
-    }
-
-    .nav-content.menu-open .nav-social {
-        top: -18px;
-        left: 98px;
-        right: auto;
-        transform: none;
-        z-index: 3;
     }
 
     .nav-content.menu-open .nav-menu {
@@ -1886,6 +1880,10 @@ body {
 
     .hamburger {
         display: flex;
+        grid-column: 3;
+        justify-self: end;
+        position: relative;
+        z-index: 3;
     }
 
     .nav-menu {
@@ -2018,7 +2016,7 @@ body {
 
     .logo {
         gap: 6px;
-        max-width: calc(100% - 138px);
+        max-width: none;
     }
 
     .logo-img {
@@ -2030,7 +2028,6 @@ body {
     }
 
     .nav-social {
-        right: 72px;
         gap: 0.55rem;
         font-size: 1.1rem;
     }
@@ -2039,11 +2036,6 @@ body {
         width: 28px;
         height: 28px;
         font-size: 1.45rem;
-    }
-
-    .nav-content.menu-open .nav-social {
-        top: -16px;
-        left: 76px;
     }
 
     .nav-content.menu-open .nav-menu {
