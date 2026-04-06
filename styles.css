@@ -209,8 +209,8 @@ body {
 }
 
 .stamp-logo {
-    width: 340px;
-    height: 340px;
+    width: 390px;
+    height: 390px;
     object-fit: contain;
     transform: rotate(-2deg);
     transform-origin: center center;
@@ -1786,8 +1786,8 @@ body {
     }
 
     .stamp-logo {
-        width: 300px;
-        height: 300px;
+        width: 310px;
+        height: 310px;
     }
 
     .owner-photo {
@@ -1925,8 +1925,8 @@ body {
     }
 
     .stamp-logo {
-        width: 210px;
-        height: 210px;
+        width: 225px;
+        height: 225px;
     }
 
     .owner-photo-container {
@@ -2113,8 +2113,8 @@ body {
     }
 
     .stamp-logo {
-        width: 180px;
-        height: 180px;
+        width: 210px;
+        height: 210px;
     }
 
     .cta-button {
